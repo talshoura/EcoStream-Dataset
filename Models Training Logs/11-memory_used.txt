@@ -1,0 +1,406 @@
+ -----  Linear  ----- 
+|=====================================================================================================|
+| Iter | Eval   | Objective:  | Objective   | BestSoFar   | BestSoFar   |       Lambda |      Learner |
+|      | result | log(1+loss) | runtime     | (observed)  | (estim.)    |              |              |
+|=====================================================================================================|
+|    1 | Best   |  0.00098203 |     0.14852 |  0.00098203 |  0.00098203 |       3.0149 | leastsquares |
+|    2 | Accept |   0.0010417 |    0.094111 |  0.00098203 |   0.0010118 |   1.2903e-05 |          svm |
+|    3 | Accept |  0.00098203 |    0.087375 |  0.00098203 |  0.00098204 |   0.00030737 | leastsquares |
+|    4 | Accept |  0.00098203 |    0.075945 |  0.00098203 |  0.00098204 |   7.9607e-09 | leastsquares |
+|    5 | Accept |  0.00098203 |    0.098475 |  0.00098203 |  0.00098204 |       21.064 | leastsquares |
+|    6 | Accept |  0.00098203 |    0.079203 |  0.00098203 |  0.00098203 |   2.1246e-09 | leastsquares |
+|    7 | Accept |  0.00098203 |    0.085356 |  0.00098203 |  0.00098203 |       21.158 | leastsquares |
+|    8 | Accept |  0.00098203 |     0.08274 |  0.00098203 |  0.00098203 |    2.125e-09 | leastsquares |
+|    9 | Accept |  0.00098203 |    0.071724 |  0.00098203 |  0.00098203 |       21.136 | leastsquares |
+|   10 | Accept |  0.00098203 |     0.13617 |  0.00098203 |  0.00098203 |   2.1195e-09 | leastsquares |
+
+__________________________________________________________
+Optimization completed.
+MaxObjectiveEvaluations of 10 reached.
+Total function evaluations: 10
+Total elapsed time: 9.1819 seconds
+Total objective function evaluation time: 0.95962
+
+Best observed feasible point:
+    Lambda      Learner   
+    ______    ____________
+
+    3.0149    leastsquares
+
+Observed objective function value = 0.00098203
+Estimated objective function value = 0.00098203
+Function evaluation time = 0.14852
+
+Best estimated feasible point (according to models):
+      Lambda        Learner   
+    __________    ____________
+
+    0.00030737    leastsquares
+
+Estimated objective function value = 0.00098203
+Estimated function evaluation time = 0.093284
+
+ -----  Support Vector  ----- 
+|===================================================================================================================================|
+| Iter | Eval   | Objective:  | Objective   | BestSoFar   | BestSoFar   | BoxConstraint|  KernelScale |      Epsilon |  Standardize |
+|      | result | log(1+loss) | runtime     | (observed)  | (estim.)    |              |              |              |              |
+|===================================================================================================================================|
+|    1 | Best   |   0.0009822 |     0.42747 |   0.0009822 |   0.0009822 |       231.26 |     0.010708 |      0.45839 |        false |
+|    2 | Accept |   0.0009822 |     0.38371 |   0.0009822 |   0.0009822 |     0.010893 |        1.256 |       1.0831 |        false |
+|    3 | Best   |  4.5661e-05 |      12.759 |  4.5661e-05 |  4.5723e-05 |       371.48 |       153.92 |   0.00036079 |         true |
+|    4 | Accept |   0.0009822 |     0.24541 |  4.5661e-05 |  4.5754e-05 |       13.654 |       114.98 |       4.0408 |         true |
+|    5 | Accept |  4.7252e-05 |      1.4534 |  4.5661e-05 |  4.5844e-05 |       14.367 |       780.89 |   5.3342e-05 |         true |
+|    6 | Accept |  0.00024513 |      318.77 |  4.5661e-05 |  4.5883e-05 |       504.37 |       2.5328 |    0.0001437 |         true |
+|    7 | Accept |  0.00092033 |      1.9782 |  4.5661e-05 |  4.5785e-05 |       0.3378 |       973.88 |   0.00028056 |         true |
+|    8 | Accept |  4.5863e-05 |      1.5782 |  4.5661e-05 |  3.5233e-05 |       75.337 |       696.81 |   0.00016881 |         true |
+|    9 | Best   |  4.5654e-05 |      2.1219 |  4.5654e-05 |  4.5626e-05 |       285.89 |       498.71 |    7.895e-05 |         true |
+|   10 | Best   |  4.5551e-05 |      19.129 |  4.5551e-05 |  4.5576e-05 |       35.291 |       33.165 |   6.0622e-05 |         true |
+|   11 | Best   |   4.262e-05 |      3.4904 |   4.262e-05 |  4.2676e-05 |       842.75 |       615.08 |     0.001757 |         true |
+|   12 | Accept |  4.5616e-05 |       2.281 |   4.262e-05 |  4.2787e-05 |       769.93 |       946.92 |   0.00033862 |         true |
+|   13 | Accept |   4.561e-05 |      1.4107 |   4.262e-05 |  4.2862e-05 |       341.86 |       927.92 |   0.00061287 |         true |
+|   14 | Accept |  4.5642e-05 |      2.1632 |   4.262e-05 |  4.3573e-05 |       60.102 |       246.33 |   5.7895e-05 |         true |
+|   15 | Accept |  4.5792e-05 |       1.792 |   4.262e-05 |  4.2088e-05 |       22.138 |       223.95 |   9.8769e-05 |         true |
+|   16 | Accept |  4.5658e-05 |      3.3724 |   4.262e-05 |  4.3189e-05 |       15.645 |       69.885 |   5.4493e-05 |         true |
+|   17 | Accept |   0.0092622 |      187.67 |   4.262e-05 |  3.1586e-05 |       10.989 |    0.0011375 |   6.7193e-05 |         true |
+|   18 | Accept |  0.00014858 |      260.48 |   4.262e-05 |  3.2066e-05 |       948.94 |       865.49 |   0.00047758 |        false |
+|   19 | Accept |   0.0009822 |      0.2183 |   4.262e-05 |  3.2256e-05 |       990.21 |       8.7827 |       4.1743 |        false |
+|   20 | Accept |   0.0010522 |      1.4604 |   4.262e-05 |  3.2496e-05 |    0.0020346 |       992.64 |   0.00027827 |        false |
+
+__________________________________________________________
+Optimization completed.
+MaxObjectiveEvaluations of 20 reached.
+Total function evaluations: 20
+Total elapsed time: 830.1832 seconds
+Total objective function evaluation time: 823.1883
+
+Best observed feasible point:
+    BoxConstraint    KernelScale    Epsilon     Standardize
+    _____________    ___________    ________    ___________
+
+       842.75          615.08       0.001757       true    
+
+Observed objective function value = 4.262e-05
+Estimated objective function value = 4.5746e-05
+Function evaluation time = 3.4904
+
+Best estimated feasible point (according to models):
+    BoxConstraint    KernelScale     Epsilon      Standardize
+    _____________    ___________    __________    ___________
+
+       60.102          246.33       5.7895e-05       true    
+
+Estimated objective function value = 3.2496e-05
+Estimated function evaluation time = 2.2081
+
+ -----  Gaussian Process  ----- 
+|=====================================================================================================|
+| Iter | Eval   | Objective:  | Objective   | BestSoFar   | BestSoFar   |        Sigma |  Standardize |
+|      | result | log(1+loss) | runtime     | (observed)  | (estim.)    |              |              |
+|=====================================================================================================|
+|    1 | Best   |  2.9087e-05 |      36.504 |  2.9087e-05 |  2.9087e-05 |     0.076107 |         true |
+|    2 | Best   |  3.4116e-06 |      68.889 |  3.4116e-06 |  1.6171e-05 |   0.00013475 |        false |
+|    3 | Best   |  3.2902e-06 |      34.134 |  3.2902e-06 |  3.4291e-06 |   0.00037324 |         true |
+|    4 | Accept |  0.00098236 |      46.857 |  3.2902e-06 |  3.3852e-06 |      0.17587 |        false |
+|    5 | Accept |  3.5884e-06 |      36.766 |  3.2902e-06 |  3.3109e-06 |    0.0045748 |         true |
+|    6 | Accept |  3.2904e-06 |      35.638 |  3.2902e-06 |  2.7963e-06 |   0.00010011 |         true |
+|    7 | Accept |  3.3858e-06 |       66.45 |  3.2902e-06 | -2.3729e-06 |   0.00010001 |        false |
+|    8 | Accept |  9.8327e-05 |      34.124 |  3.2902e-06 | -2.1143e-06 |      0.31276 |         true |
+|    9 | Accept |  3.6833e-06 |      33.727 |  3.2902e-06 |  2.4539e-06 |     0.013509 |         true |
+|   10 | Accept |  3.3279e-06 |      36.374 |  3.2902e-06 |  2.3902e-06 |    0.0012423 |         true |
+|   11 | Accept |  3.3827e-06 |      63.739 |  3.2902e-06 |  2.9218e-06 |   0.00010028 |        false |
+|   12 | Best   |  3.2902e-06 |      33.462 |  3.2902e-06 |  2.9314e-06 |   0.00019334 |         true |
+|   13 | Accept |  3.6125e-06 |      33.858 |  3.2902e-06 |  2.9552e-06 |    0.0085652 |         true |
+|   14 | Best   |  3.2886e-06 |      35.356 |  3.2886e-06 |  2.9804e-06 |   0.00010016 |         true |
+|   15 | Accept |  3.2902e-06 |      31.287 |  3.2886e-06 |  2.9938e-06 |   0.00066277 |         true |
+|   16 | Accept |  3.5607e-06 |      40.516 |  3.2886e-06 |  3.0049e-06 |    0.0022451 |         true |
+|   17 | Accept |  3.3887e-06 |       72.33 |  3.2886e-06 |  3.1439e-06 |   0.00010011 |        false |
+|   18 | Accept |    3.29e-06 |      34.552 |  3.2886e-06 |  3.1527e-06 |   0.00019857 |         true |
+|   19 | Accept |  3.2932e-06 |      35.862 |  3.2886e-06 |  3.1611e-06 |   0.00060525 |         true |
+|   20 | Accept |  3.2892e-06 |      30.158 |  3.2886e-06 |  3.1705e-06 |   0.00010005 |         true |
+|=====================================================================================================|
+| Iter | Eval   | Objective:  | Objective   | BestSoFar   | BestSoFar   |        Sigma |  Standardize |
+|      | result | log(1+loss) | runtime     | (observed)  | (estim.)    |              |              |
+|=====================================================================================================|
+|   21 | Accept |  3.3682e-06 |       63.97 |  3.2886e-06 |  3.1697e-06 |     0.000126 |        false |
+|   22 | Accept |  3.2918e-06 |      30.749 |  3.2886e-06 |  3.2496e-06 |   0.00018906 |         true |
+|   23 | Accept |  3.6108e-06 |       31.65 |  3.2886e-06 |  3.2513e-06 |    0.0082644 |         true |
+|   24 | Accept |  3.4298e-06 |      59.774 |  3.2886e-06 |  3.2459e-06 |   0.00010046 |        false |
+|   25 | Accept |  3.2983e-06 |      26.061 |  3.2886e-06 |  3.2499e-06 |    0.0011328 |         true |
+|   26 | Accept |   3.292e-06 |      29.255 |  3.2886e-06 |  3.2536e-06 |   0.00038387 |         true |
+|   27 | Accept |  3.2914e-06 |      30.329 |  3.2886e-06 |  3.2581e-06 |   0.00010001 |         true |
+|   28 | Accept |   3.599e-06 |      37.423 |  3.2886e-06 |  3.2957e-06 |    0.0068615 |        false |
+|   29 | Accept |  3.5731e-06 |      35.386 |  3.2886e-06 |  3.2951e-06 |    0.0017415 |        false |
+|   30 | Accept |  3.5853e-06 |      49.307 |  3.2886e-06 |   3.294e-06 |    0.0038306 |        false |
+|   31 | Accept |  3.4186e-06 |      59.026 |  3.2886e-06 |  3.2941e-06 |   0.00052627 |        false |
+|   32 | Accept |  3.3747e-06 |      57.082 |  3.2886e-06 |   3.294e-06 |    0.0009403 |        false |
+|   33 | Accept |  3.5911e-06 |      36.227 |  3.2886e-06 |  2.3518e-06 |    0.0051245 |        false |
+|   34 | Accept |  3.3735e-06 |      63.194 |  3.2886e-06 |  2.3486e-06 |   0.00026861 |        false |
+|   35 | Accept |  4.1598e-06 |      30.167 |  3.2886e-06 |  2.3461e-06 |     0.024354 |         true |
+|   36 | Accept |   3.591e-06 |      37.429 |  3.2886e-06 |  2.7681e-06 |    0.0051505 |        false |
+|   37 | Accept |  3.2889e-06 |       29.84 |  3.2886e-06 |  2.7702e-06 |   0.00013552 |         true |
+|   38 | Accept |  3.5913e-06 |      37.842 |  3.2886e-06 |  2.9805e-06 |    0.0051868 |        false |
+|   39 | Accept |  3.4017e-06 |      64.388 |  3.2886e-06 |  2.9844e-06 |   0.00019677 |        false |
+|   40 | Accept |  3.3865e-06 |       60.87 |  3.2886e-06 |  2.9881e-06 |   0.00038172 |        false |
+|=====================================================================================================|
+| Iter | Eval   | Objective:  | Objective   | BestSoFar   | BestSoFar   |        Sigma |  Standardize |
+|      | result | log(1+loss) | runtime     | (observed)  | (estim.)    |              |              |
+|=====================================================================================================|
+|   41 | Accept |  3.5098e-06 |      55.802 |  3.2886e-06 |  2.9924e-06 |    0.0010936 |        false |
+|   42 | Accept |  3.7697e-06 |      33.349 |  3.2886e-06 |  2.9963e-06 |     0.016817 |         true |
+|   43 | Accept |  3.5783e-06 |      34.988 |  3.2886e-06 |  2.9994e-06 |    0.0031788 |         true |
+|   44 | Accept |  3.4094e-06 |       63.34 |  3.2886e-06 |  3.0028e-06 |   0.00068259 |        false |
+|   45 | Accept |  3.4439e-06 |      32.568 |  3.2886e-06 |   3.006e-06 |    0.0016945 |         true |
+|   46 | Best   |  3.2873e-06 |      31.039 |  3.2873e-06 |  3.0091e-06 |   0.00028256 |         true |
+|   47 | Accept |  3.2887e-06 |      34.226 |  3.2873e-06 |  3.0125e-06 |   0.00085665 |         true |
+|   48 | Accept |  4.0632e-06 |      38.004 |  3.2873e-06 |  3.2933e-06 |     0.042141 |        false |
+|   49 | Accept |  3.7085e-06 |      41.922 |  3.2873e-06 |  3.2925e-06 |     0.023036 |        false |
+|   50 | Accept |  3.8417e-06 |      37.855 |  3.2873e-06 |   3.292e-06 |     0.032552 |        false |
+
+__________________________________________________________
+Optimization completed.
+MaxObjectiveEvaluations of 50 reached.
+Total function evaluations: 50
+Total elapsed time: 2140.2592 seconds
+Total objective function evaluation time: 2113.6433
+
+Best observed feasible point:
+      Sigma       Standardize
+    __________    ___________
+
+    0.00028256       true    
+
+Observed objective function value = 3.2873e-06
+Estimated objective function value = 3.2845e-06
+Function evaluation time = 31.0394
+
+Best estimated feasible point (according to models):
+      Sigma       Standardize
+    __________    ___________
+
+    0.00010016       true    
+
+Estimated objective function value = 3.292e-06
+Estimated function evaluation time = 32.5268
+
+ -----  Trees  ----- 
+|======================================================================================|
+| Iter | Eval   | Objective:  | Objective   | BestSoFar   | BestSoFar   |  MinLeafSize |
+|      | result | log(1+loss) | runtime     | (observed)  | (estim.)    |              |
+|======================================================================================|
+|    1 | Best   |  2.9148e-06 |      0.1435 |  2.9148e-06 |  2.9148e-06 |           19 |
+|    2 | Best   |  2.1898e-07 |     0.11511 |  2.1898e-07 |  8.9655e-07 |            1 |
+|    3 | Accept |  0.00098294 |    0.030348 |  2.1898e-07 |   2.571e-07 |         1628 |
+|    4 | Accept |  3.5837e-06 |    0.035982 |  2.1898e-07 |  0.00024741 |          193 |
+|    5 | Accept |  2.5818e-06 |    0.049861 |  2.1898e-07 |  2.4041e-07 |           13 |
+|    6 | Accept |  3.4613e-06 |    0.035095 |  2.1898e-07 |  2.3958e-07 |           79 |
+|    7 | Accept |  2.5324e-07 |    0.090755 |  2.1898e-07 |  2.3747e-07 |            3 |
+|    8 | Accept |  3.5521e-06 |    0.042271 |  2.1898e-07 | -5.3197e-07 |          132 |
+|    9 | Accept |  2.1898e-07 |    0.096506 |  2.1898e-07 |  8.0857e-08 |            2 |
+|   10 | Accept |  1.3503e-06 |    0.087304 |  2.1898e-07 |  1.3548e-07 |            6 |
+|   11 | Accept |  3.3865e-06 |    0.048512 |  2.1898e-07 |  1.3734e-07 |           39 |
+|   12 | Accept |  4.1575e-07 |    0.093168 |  2.1898e-07 |   2.669e-07 |            4 |
+|   13 | Accept |  2.1898e-07 |     0.08832 |  2.1898e-07 |  2.3217e-07 |            1 |
+|   14 | Accept |  2.1898e-07 |    0.087944 |  2.1898e-07 |  1.8953e-07 |            2 |
+|   15 | Accept |  1.9421e-06 |    0.073342 |  2.1898e-07 |  1.9081e-07 |            8 |
+|   16 | Accept |  2.5324e-07 |    0.093227 |  2.1898e-07 |  2.5955e-07 |            3 |
+|   17 | Accept |  2.1898e-07 |    0.089186 |  2.1898e-07 |  2.0177e-07 |            2 |
+|   18 | Accept |  2.1898e-07 |    0.096467 |  2.1898e-07 |  2.0274e-07 |            1 |
+|   19 | Accept |  4.1575e-07 |     0.10921 |  2.1898e-07 |  2.0448e-07 |            4 |
+|   20 | Accept |  2.5324e-07 |     0.11182 |  2.1898e-07 |  2.5281e-07 |            3 |
+
+__________________________________________________________
+Optimization completed.
+MaxObjectiveEvaluations of 20 reached.
+Total function evaluations: 20
+Total elapsed time: 9.3894 seconds
+Total objective function evaluation time: 1.6179
+
+Best observed feasible point:
+    MinLeafSize
+    ___________
+
+         1     
+
+Observed objective function value = 2.1898e-07
+Estimated objective function value = 2.2491e-07
+Function evaluation time = 0.11511
+
+Best estimated feasible point (according to models):
+    MinLeafSize
+    ___________
+
+         3     
+
+Estimated objective function value = 2.5281e-07
+Estimated function evaluation time = 0.097945
+
+ -----  Neural Networks  ----- 
+|============================================================================================================================================|
+| Iter | Eval   | Objective:  | Objective   | BestSoFar   | BestSoFar   |  Activations |  Standardize |       Lambda |            LayerSizes |
+|      | result | log(1+loss) | runtime     | (observed)  | (estim.)    |              |              |              |                       |
+|============================================================================================================================================|
+|    1 | Best   |  0.00098175 |       1.915 |  0.00098175 |  0.00098175 |      sigmoid |         true |    0.0013236 | [105   1   4]         |
+|    2 | Best   |  0.00098175 |     0.12019 |  0.00098175 |  0.00098175 |         tanh |        false |   1.6178e-07 | [  3   2]             |
+|    3 | Best   |  3.9926e-06 |       24.43 |  3.9926e-06 |  0.00051259 |         relu |         true |   3.3129e-07 | [  1 131]             |
+|    4 | Accept |    0.005475 |     0.13673 |  3.9926e-06 |  0.00014115 |      sigmoid |         true |         8.69 |  4                    |
+|    5 | Accept |  4.2391e-06 |      3.6489 |  3.9926e-06 |  4.2229e-06 |         relu |         true |   7.2248e-09 | [  2  20]             |
+|    6 | Accept |  9.2033e-06 |      35.951 |  3.9926e-06 |  4.1978e-06 |      sigmoid |         true |   3.1639e-05 | [  5   5  76]         |
+|    7 | Accept |   3.728e-05 |      6.5371 |  3.9926e-06 |  4.1807e-06 |         tanh |         true |    0.0012746 | [  1 223]             |
+|    8 | Accept |   0.0055071 |     0.55141 |  3.9926e-06 |  4.2187e-06 |         relu |        false |        4.973 | [  1  45]             |
+|    9 | Accept |  0.00050847 |       4.428 |  3.9926e-06 |  4.2068e-06 |      sigmoid |         true |    0.0011861 | [  1 106]             |
+|   10 | Accept |  0.00098175 |     0.15541 |  3.9926e-06 |  4.2018e-06 |      sigmoid |        false |   9.5571e-07 | [  2  25]             |
+|   11 | Accept |  3.8465e-05 |      20.347 |  3.9926e-06 |  4.1917e-06 |         none |         true |   2.5709e-06 | [ 10 186 299]         |
+|   12 | Accept |  0.00079633 |       2.848 |  3.9926e-06 |  4.1892e-06 |         none |         true |   0.00053935 | [177   6   1]         |
+|   13 | Accept |      11.278 |      3.9096 |  3.9926e-06 |   0.0017683 |         none |        false |   6.4543e-09 | [ 13   4 300]         |
+|   14 | Best   |  3.7658e-06 |      63.289 |  3.7658e-06 |   0.0017666 |         tanh |         true |   2.1244e-09 |  291                  |
+|   15 | Accept |    0.006599 |      11.237 |  3.7658e-06 |    0.001765 |         tanh |        false |       6.5424 | [278 249]             |
+|   16 | Accept |  5.0232e-05 |      585.55 |  3.7658e-06 |   0.0017637 |      sigmoid |        false |    2.213e-06 | [268 241 286]         |
+|   17 | Accept |      10.534 |     0.21645 |  3.7658e-06 |  0.00027983 |         relu |        false |   2.1579e-09 | [ 26   2]             |
+|   18 | Accept |   0.0089662 |     0.66176 |  3.7658e-06 |  0.00025904 |         relu |         true |       21.159 | [198  10]             |
+|   19 | Accept |   0.0078201 |     0.13948 |  3.7658e-06 |  0.00024885 |      sigmoid |        false |       21.158 |  1                    |
+|   20 | Accept |   0.0089616 |     0.13839 |  3.7658e-06 |  0.00023458 |         tanh |         true |       21.088 |  12                   |
+|============================================================================================================================================|
+| Iter | Eval   | Objective:  | Objective   | BestSoFar   | BestSoFar   |  Activations |  Standardize |       Lambda |            LayerSizes |
+|      | result | log(1+loss) | runtime     | (observed)  | (estim.)    |              |              |              |                       |
+|============================================================================================================================================|
+|   21 | Accept |      10.703 |      5.5186 |  3.7658e-06 |  0.00096705 |         relu |        false |       21.081 | [213  41]             |
+|   22 | Accept |   0.0081991 |     0.11126 |  3.7658e-06 |   0.0010003 |         none |         true |       13.207 |  1                    |
+|   23 | Accept |  0.00098175 |     0.19813 |  3.7658e-06 |   0.0010556 |         tanh |        false |    1.126e-08 | [ 29   3   6]         |
+|   24 | Accept |   0.0030702 |     0.24628 |  3.7658e-06 |   0.0011226 |      sigmoid |        false |       4.8124 | [ 34   7]             |
+|   25 | Accept |   0.0010127 |     0.27171 |  3.7658e-06 |   0.0011856 |         relu |         true |      0.12049 |  29                   |
+|   26 | Accept |   0.0087006 |      1.2541 |  3.7658e-06 |   0.0012322 |         tanh |        false |       17.657 | [  1 280  48]         |
+|   27 | Accept |  3.8878e-06 |      29.263 |  3.7658e-06 |   0.0032767 |      sigmoid |         true |    7.498e-09 | [300  25]             |
+|   28 | Best   |  3.7233e-06 |      29.188 |  3.7233e-06 |    0.003248 |         tanh |         true |   2.5285e-09 | [ 69  16   2]         |
+|   29 | Accept |    0.001227 |     0.37439 |  3.7233e-06 |   0.0032262 |         none |         true |      0.38048 |  49                   |
+|   30 | Accept |  3.8747e-06 |      22.786 |  3.7233e-06 |   0.0032097 |         tanh |         true |   2.4014e-09 | [  3  59   8]         |
+|   31 | Accept |   0.0047916 |     0.23153 |  3.7233e-06 |   0.0024608 |      sigmoid |         true |       12.796 | [ 22  10  11]         |
+|   32 | Accept |   0.0079911 |      3.7628 |  3.7233e-06 |   0.0024895 |         tanh |        false |       11.872 | [100 160]             |
+|   33 | Accept |   0.0063553 |     0.43809 |  3.7233e-06 |    0.002517 |      sigmoid |        false |       13.433 | [  9  84   5]         |
+|   34 | Accept |  3.8465e-05 |      0.6373 |  3.7233e-06 |   0.0025397 |         none |         true |   6.3985e-06 |  3                    |
+|   35 | Accept |  0.00079783 |      9.7873 |  3.7233e-06 |    0.002561 |         relu |         true |    0.0018692 | [  8 145   5]         |
+|   36 | Accept |   0.0054197 |     0.69537 |  3.7233e-06 |   0.0025736 |         none |         true |       4.2608 | [300  17   1]         |
+|   37 | Accept |    0.001648 |     0.77928 |  3.7233e-06 |   0.0025892 |      sigmoid |        false |       1.0764 | [111   2]             |
+|   38 | Accept |  8.0145e-06 |      152.11 |  3.7233e-06 |   0.0025998 |         relu |         true |   8.9543e-08 | [300 129]             |
+|   39 | Accept |   0.0033476 |     0.32179 |  3.7233e-06 |   0.0026131 |         tanh |        false |       18.789 |  9                    |
+|   40 | Accept |  3.8712e-06 |      36.888 |  3.7233e-06 |   0.0026207 |         tanh |         true |    1.275e-05 | [150   4   3]         |
+|============================================================================================================================================|
+| Iter | Eval   | Objective:  | Objective   | BestSoFar   | BestSoFar   |  Activations |  Standardize |       Lambda |            LayerSizes |
+|      | result | log(1+loss) | runtime     | (observed)  | (estim.)    |              |              |              |                       |
+|============================================================================================================================================|
+|   41 | Accept |   3.731e-06 |      28.427 |  3.7233e-06 |   0.0026254 |         relu |         true |   1.0486e-08 | [ 74  11]             |
+|   42 | Accept |  0.00098175 |       16.99 |  3.7233e-06 |   0.0025519 |      sigmoid |         true |    0.0010273 | [  2 257 179]         |
+|   43 | Accept |   0.0089186 |      1.2071 |  3.7233e-06 |   0.0025494 |         tanh |         true |       20.447 | [ 32 263]             |
+|   44 | Accept |  3.8472e-05 |      0.1667 |  3.7233e-06 |   0.0025475 |         none |         true |   4.5778e-09 |  22                   |
+|   45 | Accept |  3.8352e-06 |      17.381 |  3.7233e-06 |   0.0025918 |      sigmoid |         true |   5.9802e-09 | [ 50  23]             |
+|   46 | Accept |  0.00098175 |     0.10252 |  3.7233e-06 |    0.002591 |      sigmoid |        false |    1.569e-08 |  4                    |
+|   47 | Accept |  6.2096e-05 |      140.72 |  3.7233e-06 |  0.00014769 |      sigmoid |        false |    3.145e-05 | [300   3]             |
+|   48 | Accept |   0.0010998 |     0.16698 |  3.7233e-06 |  0.00014981 |         tanh |         true |      0.24949 |  2                    |
+|   49 | Accept |  0.00019647 |      2.9419 |  3.7233e-06 |  0.00015205 |         relu |         true |   7.8069e-06 | [  4   1]             |
+|   50 | Accept |  3.9347e-05 |      1.8437 |  3.7233e-06 |  0.00015376 |         none |         true |   0.00073383 | [ 98   1]             |
+
+__________________________________________________________
+Optimization completed.
+MaxObjectiveEvaluations of 50 reached.
+Total function evaluations: 50
+Total elapsed time: 1295.9806 seconds
+Total objective function evaluation time: 1271.0184
+
+Best observed feasible point:
+    Activations    Standardize      Lambda        LayerSizes  
+    ___________    ___________    __________    ______________
+
+       tanh           true        2.5285e-09    69    16     2
+
+Observed objective function value = 3.7233e-06
+Estimated objective function value = 0.0015806
+Function evaluation time = 29.1876
+
+Best estimated feasible point (according to models):
+    Activations    Standardize     Lambda         LayerSizes    
+    ___________    ___________    _________    _________________
+
+      sigmoid         false       2.213e-06    268    241    286
+
+Estimated objective function value = 0.00015376
+Estimated function evaluation time = 585.2512
+
+
+Mdl_n =
+
+  14×1 <a href="matlab:helpPopup cell" style="font-weight:bold">cell</a> array
+
+    {1×1 RegressionNeuralNetwork}
+    {1×1 RegressionNeuralNetwork}
+    {1×1 RegressionNeuralNetwork}
+    {1×1 RegressionNeuralNetwork}
+    {1×1 RegressionNeuralNetwork}
+    {1×1 RegressionNeuralNetwork}
+    {1×1 RegressionNeuralNetwork}
+    {1×1 RegressionNeuralNetwork}
+    {1×1 RegressionNeuralNetwork}
+    {1×1 RegressionNeuralNetwork}
+    {1×1 RegressionNeuralNetwork}
+    {0×0 double                 }
+    {0×0 double                 }
+    {0×0 double                 }
+
+ -----  Kernels  ----- 
+|===================================================================================================================================|
+| Iter | Eval   | Objective:  | Objective   | BestSoFar   | BestSoFar   |  KernelScale |       Lambda |      Epsilon |  Standardize |
+|      | result | log(1+loss) | runtime     | (observed)  | (estim.)    |              |              |              |              |
+|===================================================================================================================================|
+|    1 | Best   |   0.0010494 |     0.35848 |   0.0010494 |   0.0010494 |       14.631 |    5.423e-07 |      0.11662 |        false |
+|    2 | Accept |   0.0010494 |      0.2077 |   0.0010494 |   0.0010494 |      0.97587 |     0.020974 |        0.688 |         true |
+|    3 | Best   |  0.00099248 |      0.9519 |  0.00099248 |  0.00099274 |     0.041169 |   3.6896e-07 |   0.00098331 |         true |
+|    4 | Best   |  3.5978e-05 |     0.78397 |  3.5978e-05 |  0.00077873 |       11.225 |     0.024907 |    5.374e-05 |        false |
+|    5 | Best   |  1.8371e-05 |       1.172 |  1.8371e-05 |  1.9433e-05 |       8.4375 |     0.017774 |   6.0979e-05 |        false |
+|    6 | Accept |  4.9839e-05 |     0.53204 |  1.8371e-05 |   2.051e-05 |       149.78 |   2.6817e-06 |   0.00025587 |        false |
+|    7 | Accept |   0.0011228 |      1.1645 |  1.8371e-05 |  1.9035e-05 |    0.0052437 |   4.1257e-06 |   0.00011386 |        false |
+|    8 | Accept |  3.6618e-05 |      1.0074 |  1.8371e-05 |  2.5501e-05 |       14.697 |    0.0096012 |   0.00018582 |        false |
+|    9 | Accept |  6.7573e-05 |     0.60455 |  1.8371e-05 |  2.4297e-05 |       75.734 |    0.0001457 |   6.9689e-05 |        false |
+|   10 | Accept |  0.00076508 |     0.43843 |  1.8371e-05 |  1.8907e-05 |       984.98 |   0.00017095 |   0.00012751 |        false |
+|   11 | Accept |  3.2365e-05 |       2.062 |  1.8371e-05 |  1.8877e-05 |       39.575 |   3.5875e-07 |   0.00021775 |        false |
+|   12 | Best   |    3.71e-06 |      4.6498 |    3.71e-06 |  3.8413e-06 |       2.0548 |   8.3333e-05 |   0.00010478 |        false |
+|   13 | Accept |  3.7142e-06 |      3.6432 |    3.71e-06 |  3.7864e-06 |       3.6238 |   0.00043028 |   0.00020739 |        false |
+|   14 | Accept |  3.7452e-06 |      2.3036 |    3.71e-06 |  2.8163e-06 |        3.537 |     0.003255 |   8.3931e-05 |        false |
+|   15 | Accept |  3.8582e-06 |      2.0951 |    3.71e-06 |  3.6336e-06 |      0.68517 |    0.0048196 |    0.0005073 |        false |
+|   16 | Accept |  4.0371e-06 |      3.9631 |    3.71e-06 |   3.261e-06 |      0.45755 |   8.9844e-05 |   0.00012624 |        false |
+|   17 | Accept |  6.6128e-06 |     0.76282 |    3.71e-06 |  2.8336e-06 |      0.89775 |      0.14879 |   0.00021435 |        false |
+|   18 | Accept |  2.9644e-05 |      1.0514 |    3.71e-06 |  2.7878e-06 |      0.26879 |     0.034787 |   0.00055527 |        false |
+|   19 | Accept |  0.00026318 |     0.47407 |    3.71e-06 |  2.8751e-06 |       954.07 |   6.0374e-05 |   5.9398e-05 |         true |
+|   20 | Accept |  0.00046066 |     0.47249 |    3.71e-06 |  2.9118e-06 |       986.47 |   2.1846e-05 |     0.027958 |         true |
+
+__________________________________________________________
+Optimization completed.
+MaxObjectiveEvaluations of 20 reached.
+Total function evaluations: 20
+Total elapsed time: 34.6104 seconds
+Total objective function evaluation time: 28.6985
+
+Best observed feasible point:
+    KernelScale      Lambda       Epsilon      Standardize
+    ___________    __________    __________    ___________
+
+      2.0548       8.3333e-05    0.00010478       false   
+
+Observed objective function value = 3.71e-06
+Estimated objective function value = 4.3846e-06
+Function evaluation time = 4.6498
+
+Best estimated feasible point (according to models):
+    KernelScale     Lambda      Epsilon      Standardize
+    ___________    ________    __________    ___________
+
+       3.537       0.003255    8.3931e-05       false   
+
+Estimated objective function value = 2.9118e-06
+Estimated function evaluation time = 2.2961
+
+ -----  Summary  -----
+Elapsed time is 4474.323041 seconds.
+11, memory_used, linear, rmse, 0.035644, mae, 0.029182, nmse, 1.021933
+11, memory_used, svm, rmse, 0.015854, mae, 0.011064, nmse, 0.202178
+11, memory_used, gp, rmse, 0.016491, mae, 0.011311, nmse, 0.218750
+11, memory_used, tree, rmse, 0.016442, mae, 0.011230, nmse, 0.217442
+11, memory_used, nn, rmse, 0.016203, mae, 0.010671, nmse, 0.211181
+11, memory_used, kernel, rmse, 0.016321, mae, 0.011149, nmse, 0.214273
