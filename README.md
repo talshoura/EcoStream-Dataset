@@ -7,7 +7,7 @@ For comments, feedback, or question please [Contact Us](mailto:Tariq.AlShoura@uc
 <!-- Please cite the following paper if using the dataset:
 > Tariq Al Shoura, Ali Mollaahmadi Dehaghi, Reza Razavi, Behrouz Far, and Mohammad Moshirpour. 2023. SEPE Dataset: 8K Video Sequences and Images for Analysis and Development. In Proceedings of the 14th ACM Multimedia Systems Conference (MMSys ’23), June 7–10, 2023, Vancouver, BC, Canada.  -->
 
-<br><br>
+<br>
 
 > [!NOTE]
 > The sections numbering on the repo is done to align with the relevent content in the EcoStream Dataset paper
