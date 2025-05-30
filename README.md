@@ -7,27 +7,54 @@ For comments, feedback, or question please [Contact Us](mailto:Tariq.AlShoura@uc
 <!-- Please cite the following paper if using the dataset:
 > Tariq Al Shoura, Ali Mollaahmadi Dehaghi, Reza Razavi, Behrouz Far, and Mohammad Moshirpour. 2023. SEPE Dataset: 8K Video Sequences and Images for Analysis and Development. In Proceedings of the 14th ACM Multimedia Systems Conference (MMSys ’23), June 7–10, 2023, Vancouver, BC, Canada.  -->
 
+<br><br>
+
+> [!NOTE]
+> The sections numbering on the repo is done to align with the relevent content in the EcoStream Dataset paper
+
 ## Table of Contents
-- [Utilization Data Collection](#utilization-data-collection)
-  * [Video File and Stream Data](#video-file-and-stream-data)
-  * [CPU Utilization and Power Data](#cpu-utilization-and-power-data)
-  * [Memory Utilization Data](#memory-utilization-data)
-  * [GPU Utilization and Power Data](#gpu-utilization-and-power-data)
-  * [Network Data](#network-data)
-- [Data Samples](#data-samples)
-  * [Video File and Stream Data Sample](#video-file-and-stream-data-sample)
-  * [CPU Data Sample](#cpu-data-sample)
-  * [Memory Data Sample](#memory-data-sample)
-  * [GPU Data Sample](#gpu-data-sample)
-  * [Network Data Sample](#network-data-sample)
-- [Training Data Logs](#training-data-logs)
+- [3.1 Data Collection Process ](#31-data-collection-process)
+   * [3.1.1 Streams Provisioning](#311-streams-provisioning)
+      + [Server-side](#server-side)
+      + [Client-side](#client-side)
+   * [3.1.2 Utilization Data Collection](#312-utilization-data-collection)
+      + [Video File and Stream Data](#video-file-and-stream-data)
+      + [CPU Utilization and Power Data](#cpu-utilization-and-power-data)
+      + [Memory Utilization Data](#memory-utilization-data)
+      + [GPU Utilization and Power Data](#gpu-utilization-and-power-data)
+      + [Network Data](#network-data)
+   * [3.1.2 Lab Setup](#312-lab-setup)
+- [3.2 Data Points Collected](#32-data-points-collected)
+   * [3.2.1 Video Stream Data](#321-video-stream-data)
+   * [3.2.2 CPU Data](#322-cpu-data)
+   * [3.2.3 Memory Data](#323-memory-data)
+   * [3.2.4 GPU Data](#324-gpu-data)
+- [4.2 Data Preprocessing](#42-data-preprocessing)
+- [Appendix A: Data Samples](#appendix-a-data-samples)
+   * [Video File and Stream Data Sample](#video-file-and-stream-data-sample)
+   * [CPU Data Sample](#cpu-data-sample)
+   * [Memory Data Sample](#memory-data-sample)
+   * [GPU Data Sample](#gpu-data-sample)
+   * [Network Data Sample](#network-data-sample)
+- [Appendix B: Baseline Models Training Logs](#appendix-b-baseline-models-training-logs)
 ___
 
 
+1. List item   
+  1.1 List item   
+  1.2   
+2. List item
 
 
-
-
+&nbsp;1. Dog  
+&nbsp;&nbsp;&nbsp;1.1. [Utilization Data Collection](#utilization-data-collection)   
+&nbsp;&nbsp;&nbsp;1.2. Belgian Shepherd  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2.1. Malinois  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2.2. Groenendael  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2.3. Tervuren  
+&nbsp;2. Cat  
+&nbsp;&nbsp;&nbsp;2.1. Siberian  
+&nbsp;&nbsp;&nbsp;2.2. Siamese
 
 
 <br>
@@ -35,12 +62,73 @@ ___
 <br>
 <br>
 
-# Utilization Data Collection
-The basic commands' structure used to collect the data have been provided in the paper. This section presents samples of the commands used.
 
 
 
-## Video File and Stream Data
+
+
+
+
+
+
+
+
+
+
+
+# 3.1 Data Collection Process 
+This section presents the relevent codes and information used to collect the data.
+
+
+
+## 3.1.1 Streams Provisioning
+The following is the code structure used when streaming a video to a 2x2 video wall:
+
+### Server-side
+From the server-side, the streams are initialized using:
+``` bash
+ffmpeg -re -stream_loop 1 -c:v hevc -i $video_path
+    -filter_complex "[0]scale=3840:2160,
+    split=4[out1][out2][out3][out4];
+    [out1]crop=1920:1080:0:0[stream1];
+    [out2]crop=1920:1080:1920:0[stream2];
+    [out3]crop=1920:1080:0:1080[stream3];
+    [out4]crop=1920:1080:1920:1080[stream4];"
+    -map [stream1] -vcodec hevc -qp:v $qp_val -f rtsp 
+    -muxdelay 0.1 rtsp://localhost:8554/mount-1-1
+    -map [stream2] -vcodec hevc -qp:v $qp_val -f rtsp 
+    -muxdelay 0.1 rtsp://localhost:8554/mount-2-1
+    -map [stream3] -vcodec hevc -qp:v $qp_val -f rtsp 
+    -muxdelay 0.1 rtsp://localhost:8554/mount-1-2
+    -map [stream4] -vcodec hevc -qp:v $qp_val -f rtsp 
+    -muxdelay 0.1 rtsp://localhost:8554/mount-2-2
+```
+
+### Client-side
+The following command is issued for each required client, where `$i` and `$j` are the index/address of the client on the video wall
+``` bash
+ffmpeg -y -i rtsp://$server_IP/mount-$i-$j -vcodec hevc_nvenc -qp:v 0 $filename-$i-$j.mp4
+```
+<br>
+where the figure below shows a sample video highlighting the clients IDs
+
+![video_wall](assets/sample_video_wall.png)
+*__Figure 1.__ An illustration of a 2 × 2 video wall with clients' IDs*
+
+[Back to Top](#idtext)
+___
+
+<br>
+<br>
+
+
+
+
+## 3.1.2 Utilization Data Collection
+This section presents samples of the commands used to collect all relevent data in the paper.
+
+
+### Video File and Stream Data
 The data related to the video is gathered using ffprobe using the command:
 ``` bash
 ffprobe -v error \
@@ -57,7 +145,7 @@ ___
 
 
 
-## CPU Utilization and Power Data
+### CPU Utilization and Power Data
 The following is the baseline command to get the data, it should be noted that the timelines are recorded using linux functionalities such as `ts`, and the data is parsed and processed using `awk`.
 ``` bash
 powerstat -n -f -t -D 1 ${streamCaptureDuration} >> ${outFile}.txt
@@ -86,7 +174,7 @@ ___
 
 
 
-## Memory Utilization Data
+### Memory Utilization Data
 The following is the baseline command to get the data, it should be noted that the timelines are recorded using linux functionalities such as `ts`, and the data is parsed and processed using `awk`.
 ``` bash
 free -s 1 -c ${streamCaptureDuration} > ${outFile}.txt
@@ -115,7 +203,7 @@ ___
 
 
 
-## GPU Utilization and Power Data
+### GPU Utilization and Power Data
 The following is the baseline command to get the data, it should be noted that the timelines are recorded using linux functionalities such as `ts`, and the data is parsed and processed using `awk`.
 ``` bash
 nvidia-smi dmon -i 0 -s uctpvme -c ${streamCaptureDuration} > ${outFile}.txt
@@ -144,7 +232,7 @@ ___
 
 
 
-## Network Data
+### Network Data
 The following command is used to start tshark/wireshark to monitor the network traffic
 ``` bash
 tshark -i ${portID} -a duration:${streamCaptureDuration} -w ${outFile}.pcap
@@ -189,8 +277,184 @@ Sample of the outputs can be seen [**<ins>here</ins>**](#network-data-sample)
 [Back to Top](#idtext)
 ___
 
+<br>
+<br>
 
 
+
+## 3.1.2 Lab Setup
+The server-side device had an AMD Ryzen 7 6800H with Radeon Graphics CPU with $2\times16$ RAMs operating at 4800 MT/s with an NVIDIA GeForce RTX 3060 Laptop GPU. The server ran using Ubuntu 20.04.6 LTS operating system, GPU driver version 535.161.07, CUDA version 10.1, FFmpeg version 6.0, and Nvidia's codec APIs version 12.0.16. The client-side device had an AMD Ryzen Threadripper PRO 3945WX 12-Core CPU with $2\times16$ RAMs operating at 3200 MT/s and an NVIDIA RTX A5000 GPU. This device ran using CentOS 9 operating system, and GPU driver version 535.113.01, CUDA version 12.2, FFmpeg version 6.0, and Nvidia's codec APIs version 12.0.16.
+<br><br>
+
+![video_wall](assets/lab_setup.png)
+*__Figure 2.__ An illustration of the lab setup with IPs*
+
+[Back to Top](#idtext)
+___
+
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+
+# 3.2 Data Points Collected
+This section describes all datapoints collected.
+
+<br>
+
+## 3.2.1 Video Stream Data
+*__Table  5__. Data collected related to the video stream.*
+| ***Item*** | ***Description*** |
+|----|-----------------------------|
+|video_codec|The codec of the video streamed|
+|video_width|The width of the video file used in pixels|
+|video_height|The height of the video file used in pixels|
+|pixel_format|The pixels’ color format of the video file used|
+|frame_rate|The frame rate of the video file used|
+|duration|The duration of the video file used|
+|nb_frames|The number of frames of the video file used|
+|video_size|The size of the video file in bits|
+|video_bitrate|The bitrate of the video file used|
+|out_codec|The codec used in the stream |
+|displays_width|The width of stream destination (video wall) in pixels|
+|displays_height|The height of stream destination (video wall) in pixels|
+
+[Back to Top](#idtext)
+
+<br>
+
+## 3.2.2 CPU Data
+*__Table  6__. Data collected related to CPU utilization.*
+| ***Item*** | ***Description*** |
+|---|---|
+| Time | Unix epoch timestamp |
+| Name | Use case name, formatted as `${video_id\}_${streaming_usecase}` |
+| User | Percentage of CPU utilization that occurred while executing at the user level |
+| Nice | Percentage of CPU utilization that occurred while executing at the user level with nice priority |
+| Sys | Percentage of CPU utilization that occurred while executing at the system level |
+| Idle | Percentage of time that the CPU was idle and the system did not have an outstanding disk I/O request |
+| IO | Percentage of time that the CPU was idle during which the system had an outstanding disk I/O request |
+| Run | Simplified average run time |
+| Ctxt/s | Context switching rate |
+| IRQ/s | Number of Interrupt Requests |
+| Fork | Number of `fork()` system calls |
+| Exec | Number of `exec()` system calls |
+| Exit | Number of `exit()` system calls |
+| Watts | Total Power used by the CPU in Watts |
+| pkg-0 | Total Power used by the CPU's package (cores, integrated graphics, last level caches, memory controller ...etc.) in watts |
+| core | Total Power consumed by the CPU cores |
+| acpitz | Temperature reading of the acpitz sensor |
+| CPU&nbsp;Freq | Average CPU Frequency over the last second |
+| Freq Min | Min CPU Frequency reading over the last second |
+| Freq Max | Max CPU Frequency reading over the last second |
+
+[Back to Top](#idtext)
+
+<br>
+
+## 3.2.3 Memory Data
+*__Table  7__. Data collected related to Memory utilization.*
+| ***Item*** | ***Description*** |
+|---|---|
+| time | Unix epoch timestamp |
+| name | Use case name, formatted as `${video_id\}_${streaming_usecase}` |
+| memory_total | Total installed memory |
+| memory_used | Used memory (calculated as total - free - buffers - cache) |
+| memory_free | Unused memory |
+| memory_shared | Memory used (mostly) by tmpfs |
+| memory_buff | Memory used by kernel buffers |
+| memory_available | Estimation of how much memory is available for starting new applications without swapping |
+| swap_total | Total swap |
+| swap_used | Used swap |
+| swap_free | Unused swap |
+
+
+[Back to Top](#idtext)
+
+<br>
+
+## 3.2.4 GPU Data
+*__Table  8__. Data collected related to GPU utilization.*
+| ***Item*** | ***Description*** |
+|---|---|
+| time | Unix epoch timestamp |
+| name | Use case name, formatted as `${video_id\}_${streaming_usecase}` |
+| gpu(Idx) | The index of the GPU in use (0 for our cases) |
+| sm(\%) | Current frequency of Streaming Multiprocessor (\textbf{SM}) clock |
+| mem(\%) | Percent  of time over the past sample period during which global (device) memory was being read or written |
+| enc(\%) | Percent of time over the past sample period during which the GPU's video encoder was being used. |
+| dec(\%) | Percent  of  time  over  the  past  sample period during which the GPU's video decoder was being used |
+| jpg(\%) | Percent of time over the past sample period during which the GPU's JPEG decoder was being used |
+| ofa(\%) | Percent  of time over the past sample period during which the GPU's Optical Flow Accelerator (\textbf{OFA}) was being used |
+| mclk(MHz) | Current frequency of memory clock |
+| pclk(MHz) | Current frequency of processor clock |
+| rxpci(MB/s) | PCI Rx throughput in MB/s |
+| txpci(MB/s) | PCI Tx throughput in MB/s |
+| power(W) | Power usage in Watts |
+| gtemp(C) | GPU temperature in $^{\circ}C$ |
+| mtemp(C) | Memory temperature in $^{\circ}C$ |
+| pviol(\%) | Power violations as a boolean flag |
+| tviol(bool) | Temperature violations in \% |
+| fb(MB) | Frame Buffer utilization in MB |
+| bar1(MB) | Bar1 utilization in MB |
+| ccpm(MB) | Confidential Compute protected memory usage (\textbf{CCPM}) in MB |
+| sbecc(errors) | Number of aggregated single bit Error Correction Code (\textbf{ECC}) errors |
+| dbecc(errors) | Number of aggregated single bit Error Correction Code (\textbf{ECC}) errors |
+| pci(error) | Number of PCI Replay errors |
+
+[Back to Top](#idtext)
+___
+<br>
+<br>
+<br>
+<br>
+
+# 4.2 Data Preprocessing
+This section presents the the correlation matrix and the Features ranking using Minimum Redundancy Maximum Relevance (MRMR) algorithm.
+
+
+![video_wall](assets/correlation_matrix.png)
+*__Figure 3.__ Correlation Matrix between the collected data
+points.*
+
+[Back to Top](#idtext)
+
+___
+<br>
+
+<br>
+
+
+*__Table  9__. Feature ranking using Minimum Redundancy Maximum Relevance (MRMR) algorithm.*
+| feature | video width | video height | video size | video bit-rate | video qp | stream qp | displays width | display height |
+|---|---|---|---|---|---|---|---|---|
+| cpu_User | 0.000 | 0.000 | 0.000 | 0.413 | 0.000 | 0.413 | 0.765 | 0.000 |
+| cpu_Sys | 0.000 | 0.000 | 0.000 | 0.244 | 0.000 | 0.244 | 0.458 | 0.000 |
+| cpu_Watts | 0.478 | 0.274 | 0.005 | 0.282 | 0.000 | 0.282 | 0.714 | 0.478 |
+| cpu_CPUFreq | 0.157 | 0.000 | 0.000 | 0.000 | 0.157 | 0.072 | 0.220 | 0.000 |
+| cpu_FreqMax | 0.000 | 0.000 | 0.000 | 0.043 | 0.000 | 0.043 | 0.064 | 0.000 |
+| gpu_sm | 0.000 | 0.000 | 0.000 | 0.402 | 0.000 | 0.402 | 0.750 | 0.000 |
+| gpu_mem | 0.000 | 0.000 | 0.000 | 0.477 | 0.000 | 0.477 | 0.917 | 0.000 |
+| gpu_enc | 0.000 | 0.000 | 0.000 | 0.482 | 0.000 | 0.482 | 0.947 | 0.000 |
+| gpu_dec | 0.000 | 0.000 | 0.427 | 0.000 | 0.000 | 0.251 | 0.000 | 0.251 |
+| gpu_powerW | 0.609 | 0.000 | 0.000 | 0.000 | 0.609 | 0.149 | 1.068 | 0.000 |
+| memory_used | 0.000 | 0.000 | 0.000 | 0.544 | 0.000 | 0.266 | 1.087 | 0.544 |
+| memory_free | 0.000 | 0.000 | 0.000 | 0.431 | 0.000 | 0.266 | 0.861 | 0.431 |
+| net_BYTES_from_SrcIP | 0.177 | 0.014 | 0.012 | 0.177 | 0.030 | 0.243 | 0.177 | 0.177 |
+| net_BYTES_to_DstIP | 0.074 | 0.034 | 0.150 | 0.033 | 0.074 | 0.408 | 0.665 | 0.150 |
+| qual_vmaf | 0.000 | 0.000 | 0.000 | 0.000 | 0.002 | 0.603 | 0.000 | 0.000 |
+| qual_psnr_avg | 0.011 | 0.000 | 0.005 | 0.001 | 0.052 | 0.239 | 0.005 | 0.083 |
+| qual_mse_avg | 0.009 | 0.001 | 0.003 | 0.003 | 0.028 | 0.326 | 0.003 | 0.063 |
+| qual_float_ssim | 0.000 | 0.000 | 0.000 | 0.000 | 0.020 | 0.466 | 0.003 | 0.000 |
+
+
+[Back to Top](#idtext)
+___
+<br>
 
 
 
@@ -201,14 +465,14 @@ ___
 <br>
 <br>
 
-# Data Samples
+# Appendix A: Data Samples
 This section presents samples of the data collected
 
 
 
 ## Video File and Stream Data Sample
 
-*__Table  5__. 01-file_stream_data.csv data samples*
+*__Table  10__. 01-file_stream_data.csv data samples*
 | **.streams.0.codec_name** | **.streams.0.codec_type** | **.streams.0.width** | **.streams.0.height** | **.streams.0.pix_fmt** | **.streams.0.avg_frame_rate** | **.streams.0.duration** | **.streams.0.nb_frames** | **.format.filename** | **.format.format_name** | **.format.size** | **.format.bit_rate** | **.mode** | **.parameter_val** | **.out_codec** | **.screens_w** | **.screens_h** |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | hevc | video | 1920 | 1080 | yuv420p | 30000/1001 | 10.010000 | 300 | ./media/001_hevc_1K_qp_13.mp4 | "mov,mp4,m4a,3gp,3g2,mj2" | 16330847 | 13051625 | fixed_QP | 20 | hevc | 1 | 1 |
@@ -228,7 +492,7 @@ ___
 
 ## CPU Data Sample
 
-*__Table  6__. 02-cpu_pow.csv data samples*
+*__Table  11__. 02-cpu_pow.csv data samples*
 | **Time** | **Name** | **User** | **Nice** | **Sys** | **Idle** | **IO** | **Run** | **Ctxt/s** | **IRQ/s** | **Fork** | **Exec** | **Exit** | **Watts** | **pkg-0** | **core** | **acpitz** | **CPU Freq** | **Freq Min** | **Freq Max** |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1703385944.045753 | 001_hevc_1K_qp_32-fixed_QP_30_hevc_1_1 | 0.0 | 0.0 | 0.1 | 99.9 | 0.0 | 2 | 1043 | 746 | 0 | 0 | 0 | 2.26 | 2.21 | 0.05 | 38.00 | 1.40 GHz | 1.37 GHz | 1.45 GHz |
@@ -247,7 +511,7 @@ ___
 
 ## Memory Data Sample
 
-*__Table  7__. 03-mem.csv data samples*
+*__Table  12__. 03-mem.csv data samples*
 | **time** | **name** | **memory_total** | **memory_used** | **memory_free** | **memory_shared** | **memory_buff** | **memory_available** | **swap_total** | **swap_used** | **swap_free** |
 |---|---|---|---|---|---|---|---|---|---|---|
 | 1703385944.569552 | 001_hevc_1K_qp_32-fixed_QP_30_hevc_1_1 | 32069712 | 1571688 | 2790076 | 4952 | 27707948 | 30028836 | 2097148 | 1024 | 2096124 |
@@ -266,7 +530,7 @@ ___
 
 ## GPU Data Sample
 
-*__Table  8__. 04-gpu.csv data samples*
+*__Table  13__. 04-gpu.csv data samples*
 | **time** | **name** | **gpu(Idx)** | **sm(%)** | **mem(%)** | **enc(%)** | **dec(%)** | **jpg(%)** | **ofa(%)** | **mclk(MHz)** | **pclk(MHz)** | **rxpci(MB/s)** | **txpci(MB/s)** | **power(W)** | **gtemp(C)** | **mtemp(C)** | **pviol(%)** | **tviol(bool)** | **fb(MB)** | **bar1(MB)** | **ccpm(MB)** | **sbecc(errors)** | **dbecc(errors)** | **pci(error)** |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 1703385944.867071 | 001_hevc_1K_qp_32-fixed_QP_30_hevc_1_1 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 7000 | 1702 | 0 | 0 | 23 | 43 | - | 0 | 0 | 9 | 3 | 0 | - | - | 0 |
@@ -285,7 +549,7 @@ ___
 
 ## Network Data Sample
 
-*__Table  9__. 05-tshark_data.csv data samples*
+*__Table  14__. 05-tshark_data.csv data samples*
 | **FNAME** | **SECONDS** | **FRAMES** | **BYTES** | **FRAMES_from_SrcIP** | **BYTES_from_SrcIP** | **FRAMES_to_DstIP** | **BYTES_to_DstIP** | **MIN_initial_rtt_from_SrcIP** | **MAX_initial_rtt_from_SrcIP** | **AVG_initial_rtt_from_SrcIP** | **MIN_ack_rtt_from_SrcIP** | **MAX_ack_rtt_from_SrcIP** | **AVG_ack_rtt_from_SrcIP** | **COUNT_rtp_payload** |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 001_hevc_1K_qp_13-fixed_QP_20_hevc_1_1.pcap | 10 | 0 | 0 | 0 | 0 | 0 | 0 | 0.000000 | 0.000000 | 0.000000 | 0.000000 | 0.000000 | 0.000000 | 0 |
@@ -306,14 +570,10 @@ ___
 
 
 
-
-
-<br>
-<br>
-<br>
 <br>
 
-# Training Data Logs
+
+# Appendix B: Baseline Models Training Logs
 This section presents the logs generated when training the models for each data point, these logs can be accessed [**<ins>here</ins>**](https://drive.google.com/drive/folders/14Wenrjd0a7oiQ9YNCbdcYUQ_RsE4JM0I?usp=sharing).
 
 
