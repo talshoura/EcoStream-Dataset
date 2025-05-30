@@ -23,7 +23,7 @@ For comments, feedback, or question please [Contact Us](mailto:Tariq.AlShoura@uc
       + [Memory Utilization Data](#memory-utilization-data)
       + [GPU Utilization and Power Data](#gpu-utilization-and-power-data)
       + [Network Data](#network-data)
-   * [3.1.2 Lab Setup](#312-lab-setup)
+   * [3.1.3 Lab Setup](#313-lab-setup)
 - [3.2 Data Points Collected](#32-data-points-collected)
    * [3.2.1 Video Stream Data](#321-video-stream-data)
    * [3.2.2 CPU Data](#322-cpu-data)
@@ -260,7 +260,7 @@ ___
 
 
 
-## 3.1.2 Lab Setup
+## 3.1.3 Lab Setup
 The server-side device had an AMD Ryzen 7 6800H with Radeon Graphics CPU with $2\times16$ RAMs operating at 4800 MT/s with an NVIDIA GeForce RTX 3060 Laptop GPU. The server ran using Ubuntu 20.04.6 LTS operating system, GPU driver version 535.161.07, CUDA version 10.1, FFmpeg version 6.0, and Nvidia's codec APIs version 12.0.16. The client-side device had an AMD Ryzen Threadripper PRO 3945WX 12-Core CPU with $2\times16$ RAMs operating at 3200 MT/s and an NVIDIA RTX A5000 GPU. This device ran using CentOS 9 operating system, and GPU driver version 535.113.01, CUDA version 12.2, FFmpeg version 6.0, and Nvidia's codec APIs version 12.0.16.
 <br><br>
 
