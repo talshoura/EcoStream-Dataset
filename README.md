@@ -40,30 +40,8 @@ For comments, feedback, or question please [Contact Us](mailto:Tariq.AlShoura@uc
 ___
 
 
-1. List item   
-  1.1 List item   
-  1.2   
-2. List item
-
-
-&nbsp;1. Dog  
-&nbsp;&nbsp;&nbsp;1.1. [Utilization Data Collection](#utilization-data-collection)   
-&nbsp;&nbsp;&nbsp;1.2. Belgian Shepherd  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2.1. Malinois  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2.2. Groenendael  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.2.3. Tervuren  
-&nbsp;2. Cat  
-&nbsp;&nbsp;&nbsp;2.1. Siberian  
-&nbsp;&nbsp;&nbsp;2.2. Siamese
-
-
 <br>
 <br>
-<br>
-<br>
-
-
-
 
 
 
@@ -488,6 +466,7 @@ This section presents samples of the data collected
 [Back to Top](#idtext)
 ___
 
+<br>
 
 
 ## CPU Data Sample
@@ -507,6 +486,7 @@ ___
 [Back to Top](#idtext)
 ___
 
+<br>
 
 
 ## Memory Data Sample
@@ -526,6 +506,7 @@ ___
 [Back to Top](#idtext)
 ___
 
+<br>
 
 
 ## GPU Data Sample
@@ -545,6 +526,7 @@ ___
 [Back to Top](#idtext)
 ___
 
+<br>
 
 
 ## Network Data Sample
@@ -565,7 +547,7 @@ ___
 [Back to Top](#idtext)
 ___
 
-
+<br>
 
 
 
