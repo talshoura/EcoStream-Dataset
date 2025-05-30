@@ -2,7 +2,7 @@
 <a id="idtext"></a> 
 #  EcoStream: Resource Utilization Dataset
 Please feel free to [**view and download the dataset here**](https://drive.google.com/drive/folders/1EM_fpRZug_8PZEgvTQa-mqhfO0gYtv9y?usp=sharing) \
-For comments, feedback, or question please [Contact Us](mailto:Tariq.AlShoura@ucalgary.ca?subject=Inquiry%20about%20the%20Resource%20Utilization%20Dataset) at: [Tariq.AlShoura@ucalgary.ca](mailto:Tariq.AlShoura@ucalgary.ca?subject=Inquiry%20about%20the%20Resource%20Utilization%20Dataset)
+For comments, feedback, or questions, please [Contact Us](mailto:Tariq.AlShoura@ucalgary.ca?subject=Inquiry%20about%20the%20Resource%20Utilization%20Dataset) at: [Tariq.AlShoura@ucalgary.ca](mailto:Tariq.AlShoura@ucalgary.ca?subject=Inquiry%20about%20the%20Resource%20Utilization%20Dataset)
 
 <!-- Please cite the following paper if using the dataset:
 > Tariq Al Shoura, Ali Mollaahmadi Dehaghi, Reza Razavi, Behrouz Far, and Mohammad Moshirpour. 2023. SEPE Dataset: 8K Video Sequences and Images for Analysis and Development. In Proceedings of the 14th ACM Multimedia Systems Conference (MMSys ’23), June 7–10, 2023, Vancouver, BC, Canada.  -->
@@ -10,7 +10,7 @@ For comments, feedback, or question please [Contact Us](mailto:Tariq.AlShoura@uc
 <br>
 
 > [!NOTE]
-> The sections numbering on the repo is done to align with the relevent content in the EcoStream Dataset paper
+> The sections numbering on the repo is done to align with the relevant content in the EcoStream Dataset paper
 
 ## Table of Contents
 - [3.1 Data Collection Process ](#31-data-collection-process)
@@ -55,7 +55,7 @@ ___
 
 
 # 3.1 Data Collection Process 
-This section presents the relevent codes and information used to collect the data.
+This section presents the relevant codes and information used to collect the data.
 
 
 
@@ -88,7 +88,7 @@ The following command is issued for each required client, where `$i` and `$j` ar
 ffmpeg -y -i rtsp://$server_IP/mount-$i-$j -vcodec hevc_nvenc -qp:v 0 $filename-$i-$j.mp4
 ```
 <br>
-where the figure below shows a sample video highlighting the clients IDs
+where the figure below shows a sample video highlighting the clients' IDs
 
 ![video_wall](assets/sample_video_wall.png)
 *__Figure 1.__ An illustration of a 2 × 2 video wall with clients' IDs*
@@ -103,7 +103,7 @@ ___
 
 
 ## 3.1.2 Utilization Data Collection
-This section presents samples of the commands used to collect all relevent data in the paper.
+This section presents samples of the commands used to collect all relevant data in the paper.
 
 
 ### Video File and Stream Data
@@ -115,7 +115,7 @@ ffprobe -v error \
     -of json=c=1 ${video_file_name}
 ```
 
-The information is then parsed and stored in addition to the streaming parameter and the number of displays are then stored in  ```01-file_stream_data.csv```, a sample of output can be seen in [**<ins>here</ins>**](#video-file-and-stream-data-sample)
+The information is then parsed and stored in addition to the streaming parameter and the number of displays and then stored in  ```01-file_stream_data.csv```, a sample of output can be seen in [**<ins>here</ins>**](#video-file-and-stream-data-sample)
 <br>
 
 [Back to Top](#idtext)
@@ -153,7 +153,7 @@ ___
 
 
 ### Memory Utilization Data
-The following is the baseline command to get the data, it should be noted that the timelines are recorded using linux functionalities such as `ts`, and the data is parsed and processed using `awk`.
+The following is the baseline command to get the data; it should be noted that the timelines are recorded using Linux functionalities such as `ts`, and the data is parsed and processed using `awk`.
 ``` bash
 free -s 1 -c ${streamCaptureDuration} > ${outFile}.txt
 ```
@@ -182,7 +182,7 @@ ___
 
 
 ### GPU Utilization and Power Data
-The following is the baseline command to get the data, it should be noted that the timelines are recorded using linux functionalities such as `ts`, and the data is parsed and processed using `awk`.
+The following is the baseline command to get the data; it should be noted that the timelines are recorded using Linux functionalities such as `ts`, and the data is parsed and processed using `awk`.
 ``` bash
 nvidia-smi dmon -i 0 -s uctpvme -c ${streamCaptureDuration} > ${outFile}.txt
 ```
@@ -392,7 +392,7 @@ ___
 <br>
 
 # 4.2 Data Preprocessing
-This section presents the the correlation matrix and the Features ranking using Minimum Redundancy Maximum Relevance (MRMR) algorithm.
+This section presents the correlation matrix and feature ranking results obtained using the Minimum Redundancy Maximum Relevance (MRMR) algorithm.
 
 
 ![video_wall](assets/correlation_matrix.png)
@@ -559,16 +559,16 @@ ___
 This section presents the logs generated when training the models for each data point, these logs can be accessed [**<ins>here</ins>**](https://drive.google.com/drive/folders/14Wenrjd0a7oiQ9YNCbdcYUQ_RsE4JM0I?usp=sharing).
 
 
-The files are devided for each output parameters wjere the it reflects 
+The files are divided for each output parameter where it reflects 
 
 
-The files are divided for each output parameters where each file reflects the training for the given output parameter.
+The files are divided for each output parameter, where each file reflects the training for the given output parameter.
 The files are divided as follows:
 -	Training linear models, where 10 different models would be trained and evaluated. The best model’s parameters will be printed out.
--	support vector regression models, where 20 different models would be trained and evaluated. The best model’s parameters will be printed out.
+-	Support vector regression models, where 20 different models would be trained and evaluated. The best model’s parameters will be printed out.
 -	Gaussian process regression models, where 50 different models would be trained and evaluated. The best model’s parameters will be printed out.
 -	Regression models, where 20 different models would be trained and evaluated. The best model’s parameters will be printed out.
--	Neural networks regression models, where 50 different models would be trained and evaluated. The best model’s parameters will be printed out.
+-	Neural network regression models, where 50 different models would be trained and evaluated. The best model’s parameters will be printed out.
 -	Kernel functions regression models, where 20 different models would be trained and evaluated. The best model’s parameters will be printed out.
 -	A summary of the best model performance from each category against the testing data.
 
