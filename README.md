@@ -36,6 +36,7 @@ For comments, feedback, or questions, please [Contact Us](mailto:Tariq.AlShoura@
    * [Memory Data Sample](#memory-data-sample)
    * [GPU Data Sample](#gpu-data-sample)
    * [Network Data Sample](#network-data-sample)
+   * [Video Quality Data Sample](#video-quality-data-sample)
 - [Appendix B: Baseline Models Training Logs](#appendix-b-baseline-models-training-logs)
 ___
 
